@@ -21,3 +21,12 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+local servers = {"ts_ls", "tailwindcss", "eslint"}
+
+for _, server in ipairs(servers) do
+  lspconfig[server].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end

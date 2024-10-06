@@ -4,6 +4,10 @@ local plugins = {
     opts = {
       ensure_installed = {
         "gopls",
+        "prettierd",
+        "eslint-lsp",
+        "typescript-language-server",
+        "tailwindcss-language-server",
       },
     },
   },
@@ -30,8 +34,8 @@ local plugins = {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -116,11 +120,22 @@ local plugins = {
     lazy = false,
     ---enables autocomplete for opts
     ---@module "auto-session"
-    ---@type AutoSession.Config
     opts = {
       suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
       -- log_level = 'debug',
     }
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+    config = function ()
+      require('nvim-ts-autotag').setup()
+    end
   }
 }
 return plugins
