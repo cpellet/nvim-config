@@ -9,6 +9,7 @@ local plugins = {
         "eslint-lsp",
         "typescript-language-server",
         "tailwindcss-language-server",
+        "terraform-ls"
       },
     },
   },

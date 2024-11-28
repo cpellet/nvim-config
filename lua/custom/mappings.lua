@@ -50,4 +50,14 @@ M.gopher = {
   }
 }
 
+M.kubectl = {
+  plugin = true,
+  n = {
+    ["<leader>kk"] = {
+      "<cmd>lua require('kubectl').toggle()<CR>",
+      "Toggle kubectl"
+    }
+  }
+}
+
 return M
