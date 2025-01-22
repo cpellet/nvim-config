@@ -1,15 +1,25 @@
+local cmp = require "cmp"
+
 local plugins = {
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "gopls",
+
         "prettierd",
         "rust-analyzer",
+
         "eslint-lsp",
         "typescript-language-server",
         "tailwindcss-language-server",
-        "terraform-ls"
+
+        "terraform-ls",
+
+        "pyright",
+        "mypy",
+        "ruff",
+        "black"
       },
     },
   },
@@ -95,7 +105,6 @@ local plugins = {
     event = "InsertEnter",
     opts = require("custom.configs.overrides").copilot,
   },
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -115,6 +124,16 @@ local plugins = {
         { name = "nvim_lua", group_index = 2 },
         { name = "path",     group_index = 2 },
       },
+      sorting = {
+		    comparators = {
+			    cmp.config.compare.offset,
+			    cmp.config.compare.exact,
+			    cmp.config.compare.score,
+			    cmp.config.compare.recently_used,
+			    -- require("cmp-under-comparator").under,
+			    cmp.config.compare.kind,
+		    },
+	    },
     },
   },
   {
